@@ -113,7 +113,7 @@
 	}
 
 	
-	ContactDaoHandler.prototype.delete = function(contactId) {
+	ContactDaoHandler.prototype.deletec = function(contactId) {
 		return $.ajax({
 			type : "POST",
 			url : "daoContactDelete.do",
@@ -221,7 +221,7 @@
 	}
 	
 	
-	GroupDaoHandler.prototype.delete = function(groupId) {
+	GroupDaoHandler.prototype.deleteg = function(groupId) {
 		return $.ajax({
 			type : "POST",
 			url : "daoGroupDelete.do",

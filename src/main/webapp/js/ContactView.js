@@ -35,7 +35,7 @@ brite.registerView("ContactView", {emptyParent:true}, {
     	   var contactId = $(event.target).closest("tr").attr("data-contact-id");
     	   var contactDao = brite.dao("Contact");
     	   
-    	   contactDao.delete(contactId).pipe(function(contact) {
+    	   contactDao.deletec(contactId).pipe(function(contact) {
     		   brite.display("MainView",$mainview);
     	   })
        },

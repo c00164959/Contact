@@ -32,7 +32,7 @@ brite.registerView("GroupView", {emptyParent:true}, {
     	   var groupId = $(event.target).closest("tr").attr("data-group-id");
     	   var groupDao = brite.dao("Group");
     	   
-    	   groupDao.delete(groupId).pipe(function(group) {
+    	   groupDao.deleteg(groupId).pipe(function(group) {
     		   brite.display("MainView",$mainview);
     	   })
        }
