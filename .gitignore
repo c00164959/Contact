@@ -1,43 +1,14 @@
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
-
-# Folder config file
-Desktop.ini
-
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
-
-# Windows shortcuts
-*.lnk
-
-# =========================
-# Operating System Files
-# =========================
-
-# OSX
-# =========================
-
+# Mac stuff, ignore
 .DS_Store
-.AppleDouble
-.LSOverride
-
-# Thumbnails
-._*
-
-# Files that might appear on external disk
-.Spotlight-V100
-.Trashes
-
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
+# Eclipse stuff, should be for each developer, so, ignore
+.classpath
+.project
+.settings
+# since we use Maven, ant buil.xml will be private for each developers
+#  (if they need their own scripts to do some stuff)
+build.xml
+# maven target (we definitely do not want this one in git)
+target/
+# the bin/ folder is the way Snow recommends to output it's .class in eclipse
+# so that snowJetty can take those classes and run the app without having to do a mvn package
+bin/
