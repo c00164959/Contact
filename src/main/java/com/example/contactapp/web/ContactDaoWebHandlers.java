@@ -10,7 +10,11 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import com.britesnow.snow.web.handler.annotation.WebActionHandler;
+import com.britesnow.snow.web.param.annotation.PathVar;
 import com.britesnow.snow.web.param.annotation.WebParam;
+import com.britesnow.snow.web.rest.annotation.WebDelete;
+import com.britesnow.snow.web.rest.annotation.WebGet;
+import com.britesnow.snow.web.rest.annotation.WebPost;
 import com.example.contactapp.dao.ContactDao;
 import com.example.contactapp.dao.GroupDao;
 import com.example.contactapp.entity.Contact;
@@ -37,16 +41,16 @@ public class ContactDaoWebHandlers {
         
     };
 
-    @WebActionHandler
-    public Contact daoContactGet(@WebParam("contactId")Long id){
-    	System.out.println("contactId:" + id);
-    	Contact contact = contactDao.get(id);
+    @WebGet("/api/contact-{contactId}")
+    public Contact daoContactGet(@PathVar("contactId")Long contactId){
+    	System.out.println("contactId:" + contactId);
+    	Contact contact = contactDao.get(contactId);
     	return contact;
     }
     
-    @WebActionHandler
-    public List<Group> daoContactGetGroups(@WebParam("contactId")Long id){
-    	Contact contact = contactDao.get(id);
+    @WebGet("/api/contact-getGroups-{contactId}}")
+    public List<Group> daoContactGetGroups(@PathVar("contactId")Long contactId){
+    	Contact contact = contactDao.get(contactId);
     	ArrayList<Group> includeGroups = contact.getGroups();
     	ArrayList<Long> allGroupIds = groupDao.getGroupIds();
     	List<Group> returnGroups = new ArrayList<Group>();
@@ -77,32 +81,32 @@ public class ContactDaoWebHandlers {
     	return returnGroups;
     }
     
-    @WebActionHandler
+    @WebGet("/api/contacts")
     public List<Contact> daoContactList(){
     	return contactDao.list();
     }
     
-    @WebActionHandler
+    @WebPost("/api/create-contact")
     public Contact daoContactCreate(@WebParam("firstName")String firstName, @WebParam("lastName")String lastName){
     	Contact contact = contactDao.create(firstName, lastName);
     	return contact;
     }
     
-    @WebActionHandler
+    @WebPost("/api/update-contact")
     public Contact daoContactUpdate(@WebParam("contactId")Long contactId, @WebParam("firstName")String firstName, 
     		@WebParam("lastName")String lastName){
     	
     	Contact contact = contactDao.update(contactId, firstName, lastName);
     	return contact;
     }
-    
-    @WebActionHandler
-    public Contact daoContactDelete(@WebParam("contactId")Long contactId){
+
+    @WebDelete("/api/contact-{contactId}")
+    public Contact daoContactDelete(@PathVar("contactId")Long contactId){
     	Contact contact = contactDao.delete(contactId);
     	return contact;
     }
     
-    @WebActionHandler
+    @WebPost("/api/contact-setGroups")
     public Contact daoContactSetGroup(@WebParam("contactId")Long contactId, @WebParam("groupIds")String groupIds){
     	if(groupIds != null) {
     		String stringarray[] = groupIds.split("\\|");

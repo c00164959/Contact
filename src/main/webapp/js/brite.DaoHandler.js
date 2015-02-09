@@ -23,14 +23,10 @@
 	}	
 	
 	ContactDaoHandler.prototype.get = function(contactId) {
-		var data = {
-				contactId : contactId
-			};
-
 			return $.ajax({
-				type : "POST",
-				url : "daoContactGet.do",
-				data : data,
+				type : "GET",
+				url : "/api/contact-" + contactId,
+				//data : data,
 				dataType : "json"
 			}).pipe(function(val) {
 				return val;
@@ -38,14 +34,10 @@
 	}
 	
 	ContactDaoHandler.prototype.getGroups = function(contactId) {
-		var data = {
-				contactId : contactId
-			};
-			
+
 			return $.ajax({
-				type : "POST",
-				url : "daoContactGetGroups.do",
-				data : data,
+				type : "GET",
+                url : "/api/contact-getGroups-" + contactId,
 				dataType : "json"
 			}).pipe(function(val) {
 				return val;
@@ -55,9 +47,8 @@
 	
 	ContactDaoHandler.prototype.list = function() {
 		return $.ajax({
-			type : "POST",
-			url : "daoContactList.do",
-			data : {},
+			type : "GET",
+			url : "/api/contacts",
 			dataType : "json"
 		}).pipe(function(val) {
 			return val;
@@ -71,7 +62,7 @@
 			};
 		return $.ajax({
 			type : "POST",
-			url : "daoContactCreate.do",
+			url : "/api/create-contact",
 			data : data,
 			dataType : "json"
 		}).pipe(function(val) {
@@ -88,7 +79,7 @@
 			};
 		return $.ajax({
 			type : "POST",
-			url : "daoContactUpdate.do",
+			url : "/api/update-contact",
 			data : data,
 			dataType : "json"
 		}).pipe(function(val) {
@@ -104,7 +95,7 @@
 			};
 		return $.ajax({
 			type : "POST",
-			url : "daoContactSetGroup.do",
+			url : "/api/contact-setGroups",
 			data : data,
 			dataType : "json"
 		}).pipe(function(val) {
@@ -115,9 +106,8 @@
 	
 	ContactDaoHandler.prototype.deletec = function(contactId) {
 		return $.ajax({
-			type : "POST",
-			url : "daoContactDelete.do",
-			data : {contactId: contactId},
+			type : "DELETE",
+			url : "/api/contact-" + contactId,
 			dataType : "json"
 		}).pipe(function(val) {
 			return val;
@@ -166,20 +156,25 @@
 		return this._entityType;
 	}	
 	
-	GroupDaoHandler.prototype.get = function(id) {
-		var data = {
-				obj_id : id
-			};
-
+	GroupDaoHandler.prototype.get = function(groupId) {
 			return $.ajax({
-				type : "POST",
-				url : "daoGroupGet.do",
-				data : data,
+				type : "GET",
+                url : "/api/group-" + groupId,
 				dataType : "json"
 			}).pipe(function(val) {
 				return val;
 			});
 	}
+
+
+    GroupDaoHandler.prototype.list = function() {
+        return $.ajax("/api/groups",{
+            type : "GET",
+            dataType : "json"
+        }).pipe(function(val) {
+            return val;
+        });
+    }
 	
 	GroupDaoHandler.prototype.update = function(groupId, groupName) {
 		var data = {
@@ -189,30 +184,20 @@
 
 			return $.ajax({
 				type : "POST",
-				url : "daoGroupUpdate.do",
+				url : "/api/update-group",
 				data : data,
 				dataType : "json"
 			}).pipe(function(val) {
 				return val;
 			});
 	}
-	
-	
-	GroupDaoHandler.prototype.list = function() {
-		return $.ajax({
-			type : "POST",
-			url : "daoGroupList.do",
-			data : {},
-			dataType : "json"
-		}).pipe(function(val) {
-			return val;
-		});
-	}
+
+
 	
 	GroupDaoHandler.prototype.create = function(groupName) {
 		return $.ajax({
 			type : "POST",
-			url : "daoGroupCreate.do",
+			url : "/api/create-group",
 			data : {groupName: groupName},
 			dataType : "json"
 		}).pipe(function(val) {
@@ -223,9 +208,8 @@
 	
 	GroupDaoHandler.prototype.deleteg = function(groupId) {
 		return $.ajax({
-			type : "POST",
-			url : "daoGroupDelete.do",
-			data : {groupId: groupId},
+			type : "DELETE",
+			url : "/api/group-" + groupId,
 			dataType : "json"
 		}).pipe(function(val) {
 			return val;
