@@ -13,10 +13,10 @@ brite.registerView("AddGroupView", {emptyParent:false}, {
 		var contactDao = brite.dao("Contact");
 		contactDao.get(contactId).pipe(function(contact) {
 			console.log(contact);
-			var selectedGroups = contact.groups;
+			var selectedGroups = contact.groupIds;
 			if(selectedGroups.length > 0) {
 				for(var i = 0; i < selectedGroups.length; i++) {
-					var groupId = selectedGroups[i].id;
+					var groupId = selectedGroups[i];
 					$("[groupid=" + groupId +"]")[0].checked = true;
 				}
 			}

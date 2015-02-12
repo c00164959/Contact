@@ -1,29 +1,15 @@
 package com.example.contactapp.entity;
 
+import javax.persistence.Entity;
 import java.util.ArrayList;
 
-public class Contact {
+@Entity
+public class Contact  extends BaseEntity{
 
-    private Long   id;    
     private String firstName;
     private String lastName;
-    private ArrayList<Group> groups;
-    
-    public ArrayList<Group> getGroups() {
-		return groups;
-	}
-    
-	public void setGroups(ArrayList<Group> groups) {
-		this.groups = groups;
-	}
-	
-	public Long getId() {
-        return id;
-    }
-	
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private ArrayList<Long> groupIds;
+    private String groupNames;
     
     public String getFirstName() {
         return firstName;
@@ -39,6 +25,25 @@ public class Contact {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    
-    
+
+    public ArrayList<Long> getGroupIds() {
+        return groupIds;
+    }
+
+    public void setGroupIds(ArrayList<Long> groupIds) {
+        this.groupIds = groupIds;
+    }
+
+    public String getGroupNames() {
+        return groupNames;
+    }
+
+    public void setGroupNames(String groupNames) {
+        this.groupNames = groupNames;
+    }
+
+    public Contact(String firstName,String lastName){
+        setFirstName(firstName);
+        setLastName(lastName);
+    }
 }

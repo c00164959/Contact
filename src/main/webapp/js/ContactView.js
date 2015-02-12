@@ -5,7 +5,7 @@ brite.registerView("ContactView", {emptyParent:true}, {
    },
    
    postDisplay: function(){
-	    var view = this;
+	   var view = this;
    },
    
    events: {
