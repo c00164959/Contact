@@ -53,6 +53,41 @@
 		</dependency>
 		<!-- /Snow -->
 
+        <!-- Database Dependencies -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>4.1.7.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-c3p0</artifactId>
+            <version>4.1.7.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>2.2.9</version>
+        </dependency>
+        <!-- /Database Dependencies -->
+
+        <!-- for the DAO Registry -->
+        <dependency>
+            <groupId>com.googlecode.gentyref</groupId>
+            <artifactId>gentyref</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+        <!-- /for the DAO Registry -->
+
 	</dependencies>
+
+    <!--<repositories>-->
+        <!--<repository>-->
+            <!--<id>Sonatype Snapshot</id>-->
+            <!--<url>https://oss.sonatype.org/content/repositories/snapshots/</url>-->
+        <!--</repository>-->
+    <!--</repositories>-->
 
 </project>
