@@ -42,6 +42,8 @@ public class Contact  extends BaseEntity{
         this.groupNames = groupNames;
     }
 
+    public Contact(){}
+
     public Contact(String firstName,String lastName){
         setFirstName(firstName);
         setLastName(lastName);
